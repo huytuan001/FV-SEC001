@@ -7,7 +7,31 @@ A high-performance CLI application built with Spring Boot and DuckDB for analyzi
 - **Java 17+**
 - **Maven 3.6+**
 
+## 📊 Data Preparation
+
+Before running the application, you need to prepare the input data:
+
+### Required Data File
+Create a `data/` directory in the project root and place your CSV file:
+```bash
+# Create data directory
+mkdir -p data/
+
+# Place your CSV file (must be named ad_data.csv)
+# Example: data/ad_data.csv
+```
+
+### CSV File Requirements
+The `ad_data.csv` file should contain the following columns:
+- Campaign performance metrics for CTR and CPA calculations
+- File can be of any size (optimized for large files 1GB+)
+- Ensure proper CSV formatting with headers
+
+> **Note**: The ad_data.csv file is not included in this repository due to file size limitations. You need to provide your own campaign data file.
+
 ## 🏃‍♂️ How to Run
+
+> **⚠️ Important**: Make sure you have placed the `ad_data.csv` file in the `data/` directory before running the application.
 
 ### Method 1: Maven Wrapper (Recommended)
 ```bash
@@ -46,6 +70,26 @@ All reports generated in 1336 ms
 After successful execution, check the `output/` directory for:
 - `top10_ctr.csv` - Top 10 campaigns with highest CTR
 - `top10_cpa.csv` - Top 10 campaigns with lowest CPA
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**Error: File not found - ad_data.csv**
+```
+Solution: Make sure you have:
+1. Created the data/ directory: mkdir -p data/
+2. Placed your CSV file as: data/ad_data.csv
+3. Verified the file exists: ls -la data/ad_data.csv
+```
+
+**Error: Application starts but no reports generated**
+```
+Solution: Check that your ad_data.csv file:
+1. Is not empty
+2. Has proper CSV headers
+3. Contains valid campaign data
+```
 
 ## 📦 Libraries Used
 
